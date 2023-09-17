@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Grass/Factory")]
+[CreateAssetMenu(menuName = "Grass/Prefabs")]
 public class GrassPrefabs : ScriptableObject
 {
     [SerializeField] private List<Grass> _grassPrefabs;

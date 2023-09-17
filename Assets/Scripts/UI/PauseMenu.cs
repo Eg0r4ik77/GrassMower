@@ -13,10 +13,10 @@ public class PauseMenu : Menu
         _buttons[0].onClick.RemoveListener(Resume);
         _buttons[1].onClick.RemoveListener(GoToMenu);
     }
-    
+
     private void Resume()
     {
-        SwitchActive();
+        Close();
     }
 
     private void GoToMenu()

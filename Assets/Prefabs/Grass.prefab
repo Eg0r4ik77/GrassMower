@@ -50,10 +50,54 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 7ad178f2dcb685c4dbde656609630156, type: 3}
       propertyPath: m_Name
-      value: Grass6 Variant
+      value: Grass
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7ad178f2dcb685c4dbde656609630156, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7664681712093407113}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7ad178f2dcb685c4dbde656609630156, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7560791927950343440}
   m_SourcePrefab: {fileID: 100100000, guid: 7ad178f2dcb685c4dbde656609630156, type: 3}
+--- !u!1 &7896721916706973734 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7ad178f2dcb685c4dbde656609630156, type: 3}
+  m_PrefabInstance: {fileID: 7014254643858462071}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &7664681712093407113
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7896721916706973734}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0515237, y: 2.887497, z: 0.8773576}
+  m_Center: {x: -0.012845039, y: 1.4768951, z: -0.119746044}
+--- !u!114 &7560791927950343440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7896721916706973734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 405bf8d6039e4defab9543d803cacd6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

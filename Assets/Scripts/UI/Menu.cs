@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
@@ -14,6 +14,8 @@ public class Menu : MonoBehaviour
     
     private bool _canScroll = true;
     private Timer _timer;
+    
+    public Action Closed;
 
     private void Start()
     {
@@ -25,16 +27,21 @@ public class Menu : MonoBehaviour
         if(_timer is { Started: true })
             _timer.Tick();
     }
-    
 
-    public void SwitchActive()
+    public void Open()
     {
-        _panel.SetActive(!_panel.activeSelf);
-        Paused = _panel.activeSelf;
+        SetActive(true);
     }
 
-    public void MoveToButton(Vector2 direction)
+    protected void Close()
     {
+        Closed?.Invoke();
+        SetActive(false);
+    }
+
+    public void SwitchButton(Vector2 direction)
+    {
+        print($"Scroll: {_canScroll}");
         if (!_canScroll)
             return;
         
@@ -55,16 +62,23 @@ public class Menu : MonoBehaviour
         _canScroll = false;
         _timer = new Timer(.5f, () => _canScroll = true);
     }
-
-    public void SwitchButton(int index)
-    {
-        _buttons[_currentButtonIndex].image.color = Color.white;
-        _currentButtonIndex = index;
-        _buttons[_currentButtonIndex].image.color = Color.green;
-    }
+    
 
     public void ClickCurrentButton()
     {
         _buttons[_currentButtonIndex].onClick?.Invoke();
+    }
+    
+    private void SetActive(bool active)
+    {
+        _panel.SetActive(active);
+        Paused = active;
+    }
+    
+    private void SwitchButton(int index)
+    {
+        _buttons[_currentButtonIndex].image.color = Color.white;
+        _currentButtonIndex = index;
+        _buttons[_currentButtonIndex].image.color = Color.green;
     }
 }
