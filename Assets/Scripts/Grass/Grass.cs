@@ -1,9 +1,15 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-public class Grass : MonoBehaviour
+public class Grass : MonoBehaviour, IPoolObject
 {
-    private void OnTriggerEnter(Collider other)
+    public Action<Grass> ReturnedToPool;
+    public bool InUse { get; set; }
+    public void Clear() {}
+
+    public void Destroy()
     {
-        Destroy(gameObject);
+        ReturnedToPool?.Invoke(this);
+        gameObject.SetActive(false);
     }
 }

@@ -1,18 +1,21 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using Zenject;
 
 public class GrassField : MonoBehaviour
 {
     [SerializeField] private GrassType _type;
     [SerializeField] private float _distanceBetweenInstances;
-    [SerializeField] private GrassPrefabs _prefabs;
 
-    private List<Grass> _grassList;
-    private GrassFactory _factory;
+    private GrassSpawner _spawner;
 
     private MeshRenderer _meshRenderer;
-
     private Vector2 _size;
+
+    [Inject]
+    private void Construct(GrassSpawner spawner)
+    {
+        _spawner = spawner;
+    }
 
     private void Awake()
     {
@@ -21,9 +24,7 @@ public class GrassField : MonoBehaviour
 
     private void Start()
     {
-        _factory = new GrassFactory(_prefabs);
         SetGrass();
-
     }
 
     private void SetGrass()
@@ -34,9 +35,8 @@ public class GrassField : MonoBehaviour
         {
             for (float j = -size.z; j < size.z; j += _distanceBetweenInstances)
             {
-                Grass grass = _factory.Create(_type);
-                grass.transform.SetParent(transform);
-                grass.transform.position = new Vector3(i, 0, j);
+                Vector3 spawnPosition = new Vector3(i, 0, j);
+                _spawner.Spawn(_type, spawnPosition);
             }
         }
     }

@@ -1,4 +1,1 @@
-﻿public class BaseGrass : Grass
-{
-    
-}
+﻿public class BaseGrass : Grass {}
