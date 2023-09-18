@@ -25,6 +25,7 @@ public class GameInputHandlersSwitcher : InputHandlersSwitcher
         }
         
         SwitchInputHandling<ActionInputHandler>();
+        Cursor.visible = false;
     }
 
     private void OnEnable()

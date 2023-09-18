@@ -11,6 +11,7 @@ public class MainMenuInputHandlersSwitcher : InputHandlersSwitcher
         menuInputHandler.Initialize();
         
         CurrentInputHandler = menuInputHandler;
+        Cursor.visible = false;
     }
 
     private void OnEnable()

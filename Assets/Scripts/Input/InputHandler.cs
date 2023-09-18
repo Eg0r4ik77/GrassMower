@@ -10,6 +10,5 @@
     }
 
     public abstract void Initialize();
-
     public abstract void Handle();
 }
