@@ -27,7 +27,6 @@ namespace Input
         {
             Vector2 moveInput = playerInput.UI.MoveToButton.ReadValue<Vector2>();
             
-            Debug.Log(moveInput);
             if (moveInput != Vector2.zero)
             {
                 _menu.SwitchButton(moveInput);

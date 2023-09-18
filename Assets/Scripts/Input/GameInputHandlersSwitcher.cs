@@ -1,16 +1,23 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Input;
-using UnityEngine;
+using Zenject;
 
 public class GameInputHandlersSwitcher : InputHandlersSwitcher
 {
-    [SerializeField] private GrassMower _grassMower;
-    [SerializeField] private PauseMenu _pauseMenu;
+    private GrassMower _grassMower;
+    private PauseMenu _pauseMenu;
     
     private List<InputHandler> _inputHandlers;
     private InputHandler _previousInputHandler;
 
+    [Inject]
+    private void Construct(GrassMower grassMower, PauseMenu pauseMenu)
+    {
+        _grassMower = grassMower;
+        _pauseMenu = pauseMenu;
+    }
+    
     private void Start()
     {
         var actionInputHandler = new ActionInputHandler(this, PlayerInput, _pauseMenu, _grassMower);

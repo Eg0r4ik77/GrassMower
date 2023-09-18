@@ -1,15 +1,17 @@
 ﻿using UnityEngine;
+using Zenject;
 
 public class GrassMower : MonoBehaviour
 {
     [SerializeField] private float _speed = 3f;
 
     private CharacterController _characterController;
+
     private void Awake()
     {
         _characterController = GetComponent<CharacterController>();
     }
-
+    
     public void TryMove(Vector3 direction)
     {
         bool rotated = Rotate(direction);

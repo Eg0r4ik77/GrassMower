@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 816630605}
   - component: {fileID: 816630604}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: ExitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -427,7 +427,7 @@ GameObject:
   - component: {fileID: 1038694719}
   - component: {fileID: 1038694718}
   m_Layer: 5
-  m_Name: Button
+  m_Name: PlayButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -838,9 +838,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panel: {fileID: 1329313816}
-  _buttons:
-  - {fileID: 1038694718}
-  - {fileID: 816630604}
+  _playButton: {fileID: 1038694718}
+  _exitButton: {fileID: 816630604}
 --- !u!4 &1336741747
 Transform:
   m_ObjectHideFlags: 0

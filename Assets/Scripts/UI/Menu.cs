@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Menu : MonoBehaviour
+public abstract class Menu : MonoBehaviour
 {
-    public static bool Paused;
-    
     [SerializeField] private GameObject _panel;
-    [SerializeField] protected List<Button> _buttons;
+    
+    protected List<Button> buttons;
 
     private int _currentButtonIndex;
     
@@ -19,6 +18,7 @@ public class Menu : MonoBehaviour
 
     private void Start()
     {
+        InitializeButtons();
         SwitchButton(_currentButtonIndex);
     }
 
@@ -39,9 +39,10 @@ public class Menu : MonoBehaviour
         SetActive(false);
     }
 
+    protected abstract void InitializeButtons();
+
     public void SwitchButton(Vector2 direction)
     {
-        print($"Scroll: {_canScroll}");
         if (!_canScroll)
             return;
         
@@ -55,7 +56,7 @@ public class Menu : MonoBehaviour
         else
         {
             newIndex++;
-            if (newIndex == _buttons.Count) newIndex--;
+            if (newIndex == buttons.Count) newIndex--;
         }
         
         SwitchButton(newIndex);
@@ -66,19 +67,18 @@ public class Menu : MonoBehaviour
 
     public void ClickCurrentButton()
     {
-        _buttons[_currentButtonIndex].onClick?.Invoke();
+        buttons[_currentButtonIndex].onClick?.Invoke();
     }
     
     private void SetActive(bool active)
     {
         _panel.SetActive(active);
-        Paused = active;
     }
     
     private void SwitchButton(int index)
     {
-        _buttons[_currentButtonIndex].image.color = Color.white;
+        buttons[_currentButtonIndex].image.color = Color.white;
         _currentButtonIndex = index;
-        _buttons[_currentButtonIndex].image.color = Color.green;
+        buttons[_currentButtonIndex].image.color = Color.green;
     }
 }
