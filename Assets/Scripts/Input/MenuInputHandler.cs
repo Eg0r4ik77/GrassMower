@@ -20,17 +20,14 @@ namespace Input
 
         public override void Handle()
         {
-            TrySwitchButton();
+            HandleButtonSwitch();
         }
         
-        private void TrySwitchButton()
+        private void HandleButtonSwitch()
         {
             Vector2 moveInput = playerInput.UI.MoveToButton.ReadValue<Vector2>();
             
-            if (moveInput != Vector2.zero)
-            {
-                _menu.SwitchButton(moveInput);
-            }
+            _menu.TrySwitchButton(moveInput);
         }
         
         private void ClickButton(InputAction.CallbackContext context)

@@ -7,8 +7,8 @@ public class ActionInputHandler : InputHandler
     private readonly GrassMower _grassMower;
     private readonly PauseMenu _pauseMenu;
 
-    public ActionInputHandler(InputHandlersSwitcher switcher, PlayerInput playerInput, PauseMenu pauseMenu, GrassMower grassMower) 
-        : base(switcher, playerInput)
+    public ActionInputHandler(InputHandlersSwitcher switcher, PlayerInput playerInput, PauseMenu pauseMenu,
+        GrassMower grassMower) : base(switcher, playerInput)
     {
         _pauseMenu = pauseMenu;
         _grassMower = grassMower;

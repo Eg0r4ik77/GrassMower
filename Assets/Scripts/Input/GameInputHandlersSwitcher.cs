@@ -13,13 +13,10 @@ public class GameInputHandlersSwitcher : InputHandlersSwitcher
 
     private void Start()
     {
-        var actionInputHandler = new ActionInputHandler(this, PlayerInput, _pauseMenu, _grassMower);
-        var pauseInputHandler = new MenuInputHandler(this, PlayerInput, _pauseMenu);
-        
         _inputHandlers = new List<InputHandler>
         { 
-            actionInputHandler,
-            pauseInputHandler
+            new ActionInputHandler(this, PlayerInput, _pauseMenu, _grassMower),
+            new MenuInputHandler(this, PlayerInput, _pauseMenu)
         };
 
         foreach (InputHandler inputHandler in _inputHandlers)

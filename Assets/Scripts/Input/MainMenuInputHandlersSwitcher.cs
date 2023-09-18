@@ -7,8 +7,9 @@ public class MainMenuInputHandlersSwitcher : InputHandlersSwitcher
 
     private void Start()
     {
-        var menuInputHandler = new MenuInputHandler(this, PlayerInput, _menu);
+        MenuInputHandler menuInputHandler = new MenuInputHandler(this, PlayerInput, _menu);
         menuInputHandler.Initialize();
+        
         CurrentInputHandler = menuInputHandler;
     }
 
@@ -22,6 +23,5 @@ public class MainMenuInputHandlersSwitcher : InputHandlersSwitcher
         PlayerInput.Disable();
     }
 
-    
     public override void SwitchInputHandling<T>() {}
 }

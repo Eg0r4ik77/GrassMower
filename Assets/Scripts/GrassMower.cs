@@ -3,6 +3,9 @@
 public class GrassMower : MonoBehaviour
 {
     [SerializeField] private float _speed = 3f;
+    
+    [SerializeField] private float _rotationMaxDegreesDelta = 6f;
+    [SerializeField] private float _maxAngleBeforeStop = 45f;
 
     private CharacterController _characterController;
 
@@ -25,21 +28,23 @@ public class GrassMower : MonoBehaviour
 
         if (rotated)
         {
-            _characterController.SimpleMove(_speed * transform.forward);
+            Vector3 speedVector = _speed * transform.forward;
+            _characterController.SimpleMove(speedVector);
         }
     }
 
     private bool Rotate(Vector3 direction)
     {
+        Quaternion transformRotation = transform.rotation;
         Quaternion targetRotation = Quaternion.LookRotation(direction);
         
-        transform.rotation = Quaternion.RotateTowards( transform.rotation,
-            targetRotation, 
-            6f);
+        transform.rotation = 
+            Quaternion.RotateTowards( transformRotation, targetRotation, _rotationMaxDegreesDelta);
 
-        bool rotated = Quaternion.Angle(transform.rotation, targetRotation) < 45f;
+        bool rotatedToMovementDirection =
+            Quaternion.Angle(transformRotation, targetRotation) < _maxAngleBeforeStop;
 
-        return rotated;
+        return rotatedToMovementDirection;
     }
 
     private void Mow(Grass grass)

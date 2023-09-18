@@ -1320,8 +1320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 0
-  _distanceBetweenInstances: 11
-  prefab: {fileID: 7560791927950343440, guid: 173d8badc2595de4db2913662bb8eace, type: 3}
+  _distanceBetweenInstances: 0.5
 --- !u!1 &1731331918
 GameObject:
   m_ObjectHideFlags: 0
@@ -1535,6 +1534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _panel: {fileID: 1169762838}
+  _scrollButtonSecondsDelay: 0.3
   _resumeButton: {fileID: 1572751546}
   _goToMenuButton: {fileID: 1731331920}
 --- !u!1001 &680865487233723757

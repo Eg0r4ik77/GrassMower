@@ -8,6 +8,8 @@ public class MainMenu : Menu
     [SerializeField] private Button _playButton;
     [SerializeField] private Button _exitButton;
     
+    private const string GameSceneName = "GameScene";
+
     private void OnEnable()
     {
         _playButton.onClick.AddListener(Play);
@@ -31,7 +33,7 @@ public class MainMenu : Menu
     
     private void Play()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene(GameSceneName);
     }
 
     private void Exit()

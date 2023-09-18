@@ -7,6 +7,8 @@ public class PauseMenu : Menu
 {
     [SerializeField] private Button _resumeButton;
     [SerializeField] private Button _goToMenuButton;
+
+    private const string MainMenuSceneName = "MainMenu";
     
     private void OnEnable()
     {
@@ -36,6 +38,6 @@ public class PauseMenu : Menu
 
     private void GoToMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene(MainMenuSceneName);
     }
 }

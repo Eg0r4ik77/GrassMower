@@ -1,5 +1,4 @@
-﻿using Enemies.Spawn;
-using UnityEngine;
+﻿using UnityEngine;
 using Zenject;
 
 public class GrassSpawner
@@ -12,14 +11,12 @@ public class GrassSpawner
         _enemyPoolsProvider = enemyPoolsProvider;
     }
 
-    public Grass Spawn(GrassType type, Vector3 position)
+    public void Spawn(GrassType type, Vector3 position)
     {
         GrassPool pool = _enemyPoolsProvider.Get(type);
         Grass grass = (Grass)pool.Get();
 
         grass.transform.position = position;
         grass.gameObject.SetActive(true);
-
-        return grass;
     }
 }    

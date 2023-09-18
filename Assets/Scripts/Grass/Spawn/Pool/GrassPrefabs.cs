@@ -9,7 +9,7 @@ public class GrassPrefabs : ScriptableObject
 
     public T Get<T>() where T : Grass
     {
-        var enemyPrefab = (T)_grassPrefabs.FirstOrDefault(enemy => enemy is T);
+        T enemyPrefab = (T)_grassPrefabs.FirstOrDefault(enemy => enemy is T);
         return enemyPrefab;
     }
 }
