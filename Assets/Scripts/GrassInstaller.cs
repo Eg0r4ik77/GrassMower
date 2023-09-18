@@ -14,7 +14,7 @@ public class GrassInstaller : MonoInstaller
             .WithArguments(_prefabs);
 
         Container
-            .BindInterfacesAndSelfTo<GrassPoolsProvider>()
+            .Bind<GrassPoolsProvider>()
             .AsSingle()
             .WithArguments(_root);
 

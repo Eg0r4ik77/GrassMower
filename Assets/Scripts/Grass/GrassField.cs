@@ -26,7 +26,8 @@ public class GrassField : MonoBehaviour
     {
         SetGrass();
     }
-
+    
+    [SerializeField] private Grass prefab;
     private void SetGrass()
     {
         Vector3 size = _meshRenderer.bounds.extents;
@@ -36,9 +37,8 @@ public class GrassField : MonoBehaviour
             for (float j = -size.z; j < size.z; j += _distanceBetweenInstances)
             {
                 Vector3 spawnPosition = new Vector3(i, 0, j);
-                _spawner.Spawn(_type, spawnPosition);
+               _spawner.Spawn(_type, spawnPosition);
             }
         }
     }
-
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,9 +11,7 @@ public abstract class Menu : MonoBehaviour
     protected List<Button> buttons;
 
     private int _currentButtonIndex;
-    
     private bool _canScroll = true;
-    private Timer _timer;
     
     public Action Closed;
 
@@ -21,13 +20,7 @@ public abstract class Menu : MonoBehaviour
         InitializeButtons();
         SwitchButton(_currentButtonIndex);
     }
-
-    private void Update()
-    {
-        if(_timer is { Started: true })
-            _timer.Tick();
-    }
-
+    
     public void Open()
     {
         SetActive(true);
@@ -41,27 +34,19 @@ public abstract class Menu : MonoBehaviour
 
     protected abstract void InitializeButtons();
 
-    public void SwitchButton(Vector2 direction)
+    public async void SwitchButton(Vector2 direction)
     {
         if (!_canScroll)
             return;
         
-        int newIndex = _currentButtonIndex;
-        
-        if (direction.y > 0)
-        {
-            newIndex--;
-            if (newIndex == -1) newIndex++;
-        }
-        else
-        {
-            newIndex++;
-            if (newIndex == buttons.Count) newIndex--;
-        }
-        
+        int newIndex = _currentButtonIndex + (direction.y > 0 ? -1 : 1);
+        newIndex = Math.Clamp(newIndex, 0, buttons.Count - 1);
+
         SwitchButton(newIndex);
+        
         _canScroll = false;
-        _timer = new Timer(.5f, () => _canScroll = true);
+        await Task.Delay(500);
+        _canScroll = true;
     }
     
 

@@ -35,9 +35,9 @@ public class GrassMower : MonoBehaviour
         
         transform.rotation = Quaternion.RotateTowards( transform.rotation,
             targetRotation, 
-            1f);
+            6f);
 
-        bool rotated = Quaternion.Angle(transform.rotation, targetRotation) < 180f;
+        bool rotated = Quaternion.Angle(transform.rotation, targetRotation) < 45f;
 
         return rotated;
     }

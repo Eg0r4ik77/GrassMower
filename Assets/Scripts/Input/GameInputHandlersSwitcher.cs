@@ -2,7 +2,6 @@
 using System.Linq;
 using Input;
 using UnityEngine;
-using Zenject;
 
 public class GameInputHandlersSwitcher : InputHandlersSwitcher
 {
