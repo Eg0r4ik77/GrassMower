@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class GrassMower : MonoBehaviour
 {
@@ -13,13 +14,10 @@ public class GrassMower : MonoBehaviour
     {
         _characterController = GetComponent<CharacterController>();
     }
-
-    private void OnTriggerEnter(Collider other)
+    
+    public void Mow(Grass grass)
     {
-        if (other.TryGetComponent(out Grass grass))
-        { 
-            Mow(grass);
-        }
+        grass.Destroy();
     }
 
     public void TryMove(Vector3 direction)
@@ -45,10 +43,5 @@ public class GrassMower : MonoBehaviour
             Quaternion.Angle(transformRotation, targetRotation) < _maxAngleBeforeStop;
 
         return rotatedToMovementDirection;
-    }
-
-    private void Mow(Grass grass)
-    {
-        grass.Destroy();
     }
 }

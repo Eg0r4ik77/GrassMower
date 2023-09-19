@@ -13,9 +13,14 @@ namespace Input
             _menu = menu;
         }
 
-        public override void Initialize()
+        public override void Start()
         {
             playerInput.UI.Click.performed += ClickButton;
+        }
+        
+        public override void Stop()
+        {
+            playerInput.UI.Click.performed -= ClickButton;
         }
 
         public override void Handle()

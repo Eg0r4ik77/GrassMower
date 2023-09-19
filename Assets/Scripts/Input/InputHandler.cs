@@ -9,6 +9,7 @@
         this.playerInput = playerInput;
     }
 
-    public abstract void Initialize();
+    public abstract void Start();
+    public abstract void Stop();
     public abstract void Handle();
 }

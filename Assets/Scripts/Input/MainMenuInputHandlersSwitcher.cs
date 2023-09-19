@@ -8,9 +8,10 @@ public class MainMenuInputHandlersSwitcher : InputHandlersSwitcher
     private void Start()
     {
         MenuInputHandler menuInputHandler = new MenuInputHandler(this, PlayerInput, _menu);
-        menuInputHandler.Initialize();
         
         CurrentInputHandler = menuInputHandler;
+        CurrentInputHandler.Start();
+        
         Cursor.visible = false;
     }
 

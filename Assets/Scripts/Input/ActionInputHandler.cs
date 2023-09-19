@@ -14,9 +14,14 @@ public class ActionInputHandler : InputHandler
         _grassMower = grassMower;
     }
 
-    public override void Initialize()
+    public override void Start()
     {
         playerInput.Player.OpenMenu.performed += OpenPauseMenu;
+    }
+    
+    public override void Stop()
+    {
+        playerInput.Player.OpenMenu.performed -= OpenPauseMenu;
     }
 
     public override void Handle()

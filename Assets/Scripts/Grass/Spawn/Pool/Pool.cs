@@ -24,11 +24,6 @@ public abstract class Pool
         poolObject.Clear();
         poolObject.InUse = false;
     }
-    
-    private void Add(IPoolObject poolObject)
-    {
-        _objects.Add(poolObject);
-    }
 
     private IPoolObject GetUnusedObject()
     {

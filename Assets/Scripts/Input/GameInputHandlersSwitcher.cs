@@ -19,11 +19,6 @@ public class GameInputHandlersSwitcher : InputHandlersSwitcher
             new MenuInputHandler(this, PlayerInput, _pauseMenu)
         };
 
-        foreach (InputHandler inputHandler in _inputHandlers)
-        {
-            inputHandler.Initialize();
-        }
-        
         SwitchInputHandling<ActionInputHandler>();
         Cursor.visible = false;
     }
@@ -59,7 +54,11 @@ public class GameInputHandlersSwitcher : InputHandlersSwitcher
     
     private void SetCurrentInputHandler(InputHandler handler)
     {
+        CurrentInputHandler?.Stop();
+        
         _previousInputHandler = CurrentInputHandler;
         CurrentInputHandler = handler;
+        
+        CurrentInputHandler.Start();
     }
 }
